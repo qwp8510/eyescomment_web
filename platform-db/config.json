@@ -1,0 +1,5 @@
+{
+    "API_USERNAME": "admin",
+    "API_PASSWORD": "defaultisnotroot",
+    "PORTAL_SERVER": "http://localhost:3000/api/"
+}
