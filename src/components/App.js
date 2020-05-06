@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import { ChannelMenu } from './ChannelMenu'
+import { ChannelMenu } from './ChannelMenu';
+import { ChannelVideo } from './ChannelVideo';
 
 const PageChannel = () => {
   return (
@@ -20,9 +21,9 @@ const App = () => {
     <div className="ui container">
       <BrowserRouter>
         <div>
-          <ChannelMenu/>
-          <Route path="/" exact component={PageChannel} />
-          <Route path="/video"  component={PageVideo} />
+          <Route path="/" exact component={ChannelMenu} />
+          <Route path="/eyescomment/video" exact component={PageVideo} />
+          <Route path="/eyescomment/channel/:id" exact component={ChannelVideo} />
         </div>
       </BrowserRouter>
     </div>

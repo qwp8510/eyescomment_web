@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import genApiRequest from '../apis/loopback';
 
 import {
   LOGIN,
@@ -12,8 +13,8 @@ export const login = () => {
   };
 };
 
-export const get_channel = () => {
-  return {
-    type: GET_CHANNEL
-  }
-}
+export const get_channel = (path, data) => async dispatch => {
+  const response = await genApiRequest('get', path, data);
+
+  dispatch({ type: GET_CHANNEL, payload: response.data });
+};

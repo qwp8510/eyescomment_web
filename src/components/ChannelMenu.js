@@ -1,6 +1,6 @@
 import React from 'react';
 import ChannelList from './channel/channelList';
-import ChannelItem from './channel/channelItem';
+import {ChannelItem} from './channel/channelItem';
 
 export class ChannelMenu extends React.Component {
   state = { data: [] }
@@ -12,6 +12,7 @@ export class ChannelMenu extends React.Component {
         return (
           <ChannelItem
             channelName={channelDetail.channelName}
+            channelId={channelDetail.channelId}
           />
         )
       })

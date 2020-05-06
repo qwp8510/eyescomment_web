@@ -1,8 +1,8 @@
 import genApiRequest from '../../actions/apiRequest';
 import config from './config.json';
 
-const ChannelList = () => {
-  let params = {};
+const VideoList = (channelId) => {
+  let params = {filter: {"where":{"channelId": `${channelId}`}}};
 
   async function login() {
     const loginParams = {
@@ -17,9 +17,9 @@ const ChannelList = () => {
 
   const renderedList = async () => {
     await login()
-    return genApiRequest('get', config.PORTAL_SERVER+'Youtube_channels', params);
+    return genApiRequest('get', config.PORTAL_SERVER+'Youtube_videos', params);
   }
   return renderedList()
 }
 
-export default ChannelList;
+export default VideoList;
