@@ -11,13 +11,13 @@ export class ChannelVideo extends React.Component {
 
   async componentDidMount() {
     let renderedList = []
+    const split_num = 3
     await VideoList(this.state.channelId).then(value => {
       function collect_renderedList() {
-        const round = Math.ceil(value.data.length/4);
+        const round = Math.ceil(value.data.length/split_num);
         for (let i=0; i<round; i++) {
-          const channelDetail = value.data.slice(0, 4)
-          console.log(channelDetail);
-          value.data.splice(0, 4)
+          const channelDetail = value.data.slice(0, split_num)
+          value.data.splice(0, split_num)
           renderedList.push(VideoItem(channelDetail))
         }
         return (

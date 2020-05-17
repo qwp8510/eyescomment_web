@@ -17,110 +17,77 @@ export const ChannelItem = ({ channelName, channelId }) => {
   );
 };
 
-export const VideoItem = ( channelDetail ) => {
-  const linkUrl = `/eyescomment/video/${channelDetail.videoId}`;
+const cardForm = ( detail ) => {
   return (
-    <div className="ui link cards">
-      <div className="card">
-        <div className="image">
-          <Link to={linkUrl} className="item">
-            <img src={channelDetail[0].videoImage} />
-          </Link>
+    <div className="card">
+      <div className="image">
+        <Link to={'/eyescomment/video/'+detail.videoId} className="item">
+          <img src={detail.videoImage || "Null"} alt="Null" />
+        </Link>
+      </div>
+      <div className="content">
+        <div className="header">{detail.channelName}</div>
+        <div className="meta">
+          <a>{detail.publishedAt}</a>
         </div>
-        <div className="content">
-          <div className="header">{channelDetail[0].channelName}</div>
-          <div className="meta">
-            <a>{channelDetail[0].publishedAt}</a>
-          </div>
-          <div className="description">
-            {channelDetail[0].videoName}
-          </div>
-        </div>
-        <div className="extra content">
-          <span className="right floated">
-            reserved
-          </span>
-          <span>
-            <i className="user icon"></i>
-            reserved
-          </span>
+        <div className="description">
+          {detail.videoName}
         </div>
       </div>
-      <div className="card">
-        <div className="image">
-          <Link to={linkUrl} className="item">
-            <img src={channelDetail[1].videoImage} />
-          </Link>
-        </div>
-        <div className="content">
-          <div className="header">{channelDetail[1].channelName}</div>
-          <div className="meta">
-            <a>{channelDetail[1].publishedAt}</a>
-          </div>
-          <div className="description">
-            {channelDetail[1].videoName}
-          </div>
-        </div>
-        <div className="extra content">
-          <span className="right floated">
-            reserved
-          </span>
-          <span>
-            <i className="user icon"></i>
-            reserved
-          </span>
-        </div>
-      </div>
-      <div className="card">
-        <div className="image">
-          <Link to={linkUrl} className="item">
-            <img src={channelDetail[2].videoImage} />
-          </Link>
-        </div>
-        <div className="content">
-          <div className="header">{channelDetail.channelName}</div>
-          <div className="meta">
-            <a>{channelDetail[2].publishedAt}</a>
-          </div>
-          <div className="description">
-            {channelDetail[2].videoName}
-          </div>
-        </div>
-        <div className="extra content">
-          <span className="right floated">
-            reserved
-          </span>
-          <span>
-            <i className="user icon"></i>
-            reserved
-          </span>
-        </div>
-      </div>
-      <div className="card">
-        <div className="image">
-          <Link to={linkUrl} className="item">
-            <img src={channelDetail[3].videoImage} />
-          </Link>
-        </div>
-        <div className="content">
-          <div className="header">{channelDetail.channelName}</div>
-          <div className="meta">
-            <a>{channelDetail[3].publishedAt}</a>
-          </div>
-          <div className="description">
-            {channelDetail[3].videoName}
-          </div>
-        </div>
-        <div className="extra content">
-          <span className="right floated">
-            reserved
-          </span>
-          <span>
-            <i className="user icon"></i>
-            reserved
-          </span>
-        </div>
+      <div className="extra content">
+        <span className="right floated">
+          reserved
+        </span>
+        <span>
+          <i className="user icon"></i>
+          reserved
+        </span>
       </div>
     </div>
   );
+}
+
+export const VideoItem = ( channelDetail ) => {
+  var itemList = [];
+  for (var detail of channelDetail) {
+    itemList.push(cardForm(detail));
+  }
+  return (
+    <div className="ui link cards">
+      {itemList}
+    </div> 
+  );
+}
+
+const commentForm = data => {
+  return (
+    <div class="comment">
+      <a class="avatar">
+        <img src="/images/avatar/small/matt.jpg" alt='null' />
+      </a>
+      <div class="content">
+        <a class="author">{data.author}</a>
+        <div class="metadata">
+          <span class="date">{data.updatedAt}</span>
+        </div>
+        <div class="text">
+          {data.text}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export const DetailItem = (detail) => {
+  var detailList = [];
+  for (var data of detail) {
+    detailList.push(commentForm(data))
+  }
+
+  return (
+    <div class="ui minimal comments">
+      <h3 class="ui dividing header">Comment</h3>
+      {detailList}
+    </div>
+  )
 }

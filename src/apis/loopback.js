@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import axios from 'axios';
 
 export default async function genApiRequest(method, path, data=null) {

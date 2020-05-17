@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import { DataReducer } from './ReducerData';
+import { DataReducer, ApiHandler } from './ReducerData';
 
 export const Reducers = {
-    Data: DataReducer
+    Data: DataReducer,
+    api: ApiHandler
 }
 
 export default combineReducers(Reducers)
