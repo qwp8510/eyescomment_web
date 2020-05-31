@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import { ChannelMenu } from './ChannelMenu';
+import ChannelMenu from './ChannelMenu';
 import { ChannelVideo } from './ChannelVideo';
 import { VideoComment } from './VideoComment'
 import VideoDetails from './channel/videoDetail';

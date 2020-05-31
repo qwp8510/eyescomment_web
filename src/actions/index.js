@@ -9,10 +9,9 @@ import {
 } from './Types';
 
 
-export const login = () => {
-  return {
-    type: LOGIN
-  };
+export const login = (method, path, data) => async dispatch => {
+  const response = await genApiRequest(method, path, data)
+  dispatch( { type: LOGIN, payload: response.data.id });
 };
 
 export const get_channel = (path, data) => async dispatch => {

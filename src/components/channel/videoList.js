@@ -1,22 +1,14 @@
-import genApiRequest from '../../actions/apiRequest';
+import genApiRequest from '../../apis/loopback';
 import config from './config.json';
+import store from '../../store';
+
 
 const VideoList = (channelId) => {
-  let params = {filter: {"where":{"channelId": `${channelId}`}}};
-
-  async function login() {
-    const loginParams = {
-      username: config.API_USERNAME,
-      password: config.API_PASSWORD
-    };
-    const request = genApiRequest('login', config.PORTAL_SERVER, loginParams)
-    await request.then((token) => {
-      params.access_token = token.data.id;
-    });
-  }
+  let params = {filter: {"where": {"channelId": `${channelId}`}}};
 
   const renderedList = async () => {
-    await login()
+    const state = store.getState();
+    params.access_token = state.data.action.payload
     return genApiRequest('get', config.PORTAL_SERVER+'Youtube_videos', params);
   }
   return renderedList()

@@ -1,11 +1,27 @@
 import React from 'react';
 import ChannelList from './channel/channelList';
-import {ChannelItem} from './channel/channelItem';
+import config from './channel/config.json';
+import { ChannelItem } from './channel/channelItem';
+import { connect } from 'react-redux';
+import { login } from '../actions';
 
-export class ChannelMenu extends React.Component {
-  state = { data: [] }
+
+class ChannelMenu extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { data: [] };
+  }
 
   async componentDidMount() {
+    const loginParams = {
+      username: config.API_USERNAME,
+      password: config.API_PASSWORD
+    };
+    await this.props.login('post', config.PORTAL_SERVER+'Users/login', loginParams);
+    this.setState({ data: await this.renderList() });
+  }
+
+  renderList = async () => {
     let renderedList = []
     await ChannelList().then(value => {
       renderedList = value.data.map(channelDetail => {
@@ -17,7 +33,7 @@ export class ChannelMenu extends React.Component {
         )
       })
     });
-    this.setState({ data: renderedList })
+    return renderedList
   }
 
   render() {
@@ -25,5 +41,13 @@ export class ChannelMenu extends React.Component {
       <div className="ui relaxed divided list">{this.state.data}</div>
     );
   }
-  
 };
+
+const mapStateToProps = (state) => {
+  return { accessToken: state.data};
+};
+
+export default connect(
+  mapStateToProps,
+  { login }
+)(ChannelMenu);

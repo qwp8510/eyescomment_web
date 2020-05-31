@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { DataReducer, ApiHandler } from './ReducerData';
 
 export const Reducers = {
-    Data: DataReducer,
+    data: DataReducer,
     api: ApiHandler
 }
 

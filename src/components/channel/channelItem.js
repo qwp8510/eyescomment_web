@@ -61,16 +61,16 @@ export const VideoItem = ( channelDetail ) => {
 
 const commentForm = data => {
   return (
-    <div class="comment">
-      <a class="avatar">
+    <div className="comment">
+      <a className="avatar">
         <img src="/images/avatar/small/matt.jpg" alt='null' />
       </a>
-      <div class="content">
-        <a class="author">{data.author}</a>
-        <div class="metadata">
-          <span class="date">{data.updatedAt}</span>
+      <div className="content">
+        <a className="author">{data.author}</a>
+        <div className="metadata">
+          <span className="date">{data.updatedAt}</span>
         </div>
-        <div class="text">
+        <div className="text">
           {data.text}
         </div>
       </div>
@@ -85,8 +85,8 @@ export const DetailItem = (detail) => {
   }
 
   return (
-    <div class="ui minimal comments">
-      <h3 class="ui dividing header">Comment</h3>
+    <div className="ui minimal comments">
+      <h3 className="ui dividing header">Comment</h3>
       {detailList}
     </div>
   )
