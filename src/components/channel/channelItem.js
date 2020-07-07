@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import userImg from '../../static/user.png';
+
 
 export const ChannelItem = ({ channelName, channelId }) => {
   const linkUrl = `/eyescomment/channel/${channelId}`;
@@ -63,7 +65,7 @@ const commentForm = data => {
   return (
     <div className="comment">
       <a className="avatar">
-        <img src="/images/avatar/small/matt.jpg" alt='null' />
+        <img src={userImg} alt='null' />
       </a>
       <div className="content">
         <a className="author">{data.author}</a>

@@ -4,7 +4,7 @@ import config from './channel/config.json';
 import { ChannelItem } from './channel/channelItem';
 import { connect } from 'react-redux';
 import { login } from '../actions';
-
+import uperCover from './cover/UperCover'
 
 class ChannelMenu extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class ChannelMenu extends React.Component {
       username: config.API_USERNAME,
       password: config.API_PASSWORD
     };
-    await this.props.login('post', config.PORTAL_SERVER+'Users/login', loginParams);
+    await this.props.login('post', config.PORTAL_SERVER + 'Users/login', loginParams);
     this.setState({ data: await this.renderList() });
   }
 
@@ -38,7 +38,12 @@ class ChannelMenu extends React.Component {
 
   render() {
     return (
-      <div className="ui relaxed divided list">{this.state.data}</div>
+      <div>
+        {uperCover()}
+        <div style={{ height: '90vh', border: '1px solid white', boxShadow: '1px 1px 1px 1px grey'}}>
+          <div className="ui relaxed divided list">{this.state.data}</div>
+        </div>
+      </div>
     );
   }
 };
