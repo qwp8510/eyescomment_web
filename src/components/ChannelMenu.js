@@ -4,7 +4,9 @@ import config from './channel/config.json';
 import { ChannelItem } from './channel/channelItem';
 import { connect } from 'react-redux';
 import { login } from '../actions';
-import uperCover from './cover/UperCover'
+import uperCover from './cover/UperCover';
+import { Table } from 'react-bootstrap'
+
 
 class ChannelMenu extends React.Component {
   constructor(props) {
@@ -24,14 +26,7 @@ class ChannelMenu extends React.Component {
   renderList = async () => {
     let renderedList = []
     await ChannelList().then(value => {
-      renderedList = value.data.map(channelDetail => {
-        return (
-          <ChannelItem
-            channelName={channelDetail.channelName}
-            channelId={channelDetail.channelId}
-          />
-        )
-      })
+      renderedList = ChannelItem(value.data)
     });
     return renderedList
   }

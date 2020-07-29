@@ -1,21 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import userImg from '../../static/user.png';
+import { Table } from 'react-bootstrap'
 
 
-export const ChannelItem = ({ channelName, channelId }) => {
-  const linkUrl = `/eyescomment/channel/${channelId}`;
+const channelForm = data => {
+  const linkUrl = `/eyescomment/channel/${data.channelId}`;
   return (
-    <div className="ui scondary pointing menu">
-      <Link to={linkUrl} className="item">
-        {channelName}
-      </Link>
-      <div className="right menu">
-        <Link to={linkUrl} className="item">
-          subscriber
+    <tr>
+      <td >
+        <Link to={linkUrl}>
+          {data.channelName}
         </Link>
-      </div>
-    </div>
+      </td>
+      <td width='150px'>
+        <Link to={linkUrl}>
+          {data.subscriber}
+        </Link>
+      </td>
+    </tr>
+  )
+}
+
+export const ChannelItem = channelDetail => {
+  var channelList = [];
+  for (var data of channelDetail) {
+    channelList.push(channelForm(data))
+  }
+  return (
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>Channel</th>
+          <th>Subscriber</th>
+        </tr>
+      </thead>
+      <tbody>
+        {channelList}
+      </tbody>
+    </Table>
   );
 };
 
