@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import userImg from '../../static/user.png';
-import { Table } from 'react-bootstrap'
+import { Table, Carousel, Navbar, Nav, Form, Button, NavDropdown, FormControl} from 'react-bootstrap'
 
 
+// Channel Manu
 const channelForm = data => {
   const linkUrl = `/eyescomment/channel/${data.channelId}`;
   return (
@@ -42,21 +43,30 @@ export const ChannelItem = channelDetail => {
   );
 };
 
+// Channel Video
 const cardForm = ( detail ) => {
   return (
     <div className="card">
       <div className="image">
-        <Link to={'/eyescomment/video/'+detail.videoId} className="item">
+        <Link to={{
+          pathname: `${'/eyescomment/video/'+detail.videoId}`,
+          query:{videoImage: `${detail.videoImage}`, 
+                 videoName: `${detail.videoName}`,
+                 videoChannelName: `${detail.channelName}`,
+                 videoPath: `${'/eyescomment/video/'+detail.videoId}`
+                }
+        }}
+          className="item">
           <img src={detail.videoImage || "Null"} alt="Null" />
         </Link>
       </div>
       <div className="content">
-        <div className="header">{detail.channelName}</div>
+        <div className="header">{detail.videoName}</div>
         <div className="meta">
           <a>{detail.publishedAt}</a>
         </div>
         <div className="description">
-          {detail.videoName}
+          {detail.channelName}
         </div>
       </div>
       <div className="extra content">
@@ -84,6 +94,43 @@ export const VideoItem = ( channelDetail ) => {
   );
 }
 
+// Video Comment
+const commentVideoStream = videoData => {
+  return (
+    <Carousel>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={videoData.videoData.videoImage}
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3>{videoData.videoData.videoName}</h3>
+          <p>{videoData.videoData.videoChannelName}</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+  )
+}
+
+const searchForm = () => {
+  return (
+    <Navbar bg="dark" variant="dark">
+      <Navbar.Brand href="/">Home</Navbar.Brand>
+      <Nav className="mr-auto">
+        <Nav.Link href="/">Reserved</Nav.Link>
+        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+          <NavDropdown.Item href="#action/3.1">clustring</NavDropdown.Item>
+        </NavDropdown>
+      </Nav>
+      <Form inline>
+        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+        <Button variant="outline-info">Search</Button>
+      </Form>
+    </Navbar>
+  )
+}
+
 const commentForm = data => {
   return (
     <div className="comment">
@@ -103,7 +150,7 @@ const commentForm = data => {
   )
 }
 
-export const DetailItem = (detail) => {
+export const DetailItem = (detail, videoData) => {
   var detailList = [];
   for (var data of detail) {
     detailList.push(commentForm(data))
@@ -111,6 +158,8 @@ export const DetailItem = (detail) => {
 
   return (
     <div className="ui minimal comments">
+      {commentVideoStream({videoData})}
+      {searchForm()}
       <h3 className="ui dividing header">Comment</h3>
       {detailList}
     </div>
