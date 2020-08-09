@@ -21,10 +21,10 @@ class VideoDetails extends React.Component {
 
   apiData = () => {
     if (this.props.api != null) {
-      return DetailItem(
-        this.props.api.action.payload.data,
-        this.props.location.query
-      )
+      return <DetailItem
+        detail={this.props.api.action.payload.data}
+        videoData={this.props.location.query}
+      />
     } else {
       return 'loading...'
     }
