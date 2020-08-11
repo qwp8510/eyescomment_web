@@ -14,8 +14,12 @@ class VideoDetails extends React.Component {
 
   async componentDidMount() {
     const state = store.getState();
-    this.params.access_token = state.data.action.payload
-    console.log(this.props);
+    this.params = {
+      database: 'comment-chinese',
+      collection: `comment-${this.props.history.location.query.channelId}`,
+      videoId: `${this.props.history.location.query.videoId}`,
+      access_token: state.data.action.payload,
+    }
     this.props.get_comment(config.PORTAL_SERVER+'Mongodbs/mongoEvent', this.params)
   }
 

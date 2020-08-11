@@ -51,11 +51,14 @@ const cardForm = ( detail ) => {
       <div className="image">
         <Link to={{
           pathname: `${'/eyescomment/video/'+detail.videoId}`,
-          query:{videoImage: `${detail.videoImage}`, 
-                 videoName: `${detail.videoName}`,
-                 videoChannelName: `${detail.channelName}`,
-                 videoPath: `${'/eyescomment/video/'+detail.videoId}`
-                }
+          query: {
+            channelId: `${detail.channelId}`,
+            videoId: `${detail.videoId}`,
+            videoImage: `${detail.videoImage}`, 
+            videoName: `${detail.videoName}`,
+            videoChannelName: `${detail.channelName}`,
+            videoPath: `${'/eyescomment/video/'+detail.videoId}`
+          }
         }}
           className="item">
           <img src={detail.videoImage || "Null"} alt="Null" />
@@ -114,24 +117,6 @@ const commentVideoStream = videoData => {
   )
 }
 
-const searchForm = () => {
-  return (
-    <Navbar bg="dark" variant="dark">
-      <Navbar.Brand href="/">Home</Navbar.Brand>
-      <Nav className="mr-auto">
-        <Nav.Link href="/">Reserved</Nav.Link>
-        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">clustring</NavDropdown.Item>
-        </NavDropdown>
-      </Nav>
-      <Form inline>
-        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        <Button variant="outline-info">Search</Button>
-      </Form>
-    </Navbar>
-  )
-}
-
 const commentForm = data => {
   return (
     <div className="comment">
@@ -152,7 +137,6 @@ const commentForm = data => {
 }
 
 const commentStream = detail => {
-  console.log('detail:', detail);
   const comments = detail.map(data => {
     return commentForm(data)
   })
@@ -221,18 +205,6 @@ class SearchBar extends React.Component {
           </form>
         </Form>
       </Navbar>
-      // <div>
-        // <form onSubmit={this.onFormSubmit}>
-        //   <div className="field">
-        //     <label>Image Search</label>
-        //     <input
-        //       type="text"
-        //       value={this.state.term}
-        //       onChange={e => this.setState({ term: e.target.value })}
-        //     />
-        //   </div>
-        // </form>
-      // </div>
     );
   }
 }
