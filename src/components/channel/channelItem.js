@@ -54,7 +54,7 @@ const cardForm = ( detail ) => {
           query: {
             channelId: `${detail.channelId}`,
             videoId: `${detail.videoId}`,
-            videoImage: `${detail.videoImage}`, 
+            videoImage: `${detail.videoImage}`,
             videoName: `${detail.videoName}`,
             videoChannelName: `${detail.channelName}`,
             videoPath: `${'/eyescomment/video/'+detail.videoId}`
