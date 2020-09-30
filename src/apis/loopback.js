@@ -6,7 +6,6 @@ export default async function genApiRequest(method, path, data, token, filterPar
   switch (method) {
     case 'get':
     case 'GET':
-      console.log('data', data);
       request = axios.get(path, {params: data});
       break;
     case 'post':
