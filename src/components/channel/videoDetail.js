@@ -1,5 +1,5 @@
 import React from 'react';
-import { get_comment } from '../../actions';
+import { getComment } from '../../actions';
 import { connect } from 'react-redux';
 import config from './config.json';
 import { DetailItem } from './channelItem';
@@ -19,7 +19,7 @@ class VideoDetails extends React.Component {
       videoId: `${this.props.history.location.query.videoId}`,
       access_token: state.data.action.payload,
     }
-    this.props.get_comment(config.PORTAL_SERVER + 'Redis/commentDetail', this.params)
+    this.props.getComment(config.PORTAL_SERVER + 'Redis/commentDetail', this.params)
   }
 
   apiData = () => {
@@ -46,5 +46,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { get_comment }
+  { getComment }
 )(VideoDetails);
