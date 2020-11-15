@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import config from './config.json';
 import { DetailItem } from './channelItem';
 import store from '../../store';
-
+import { uperMenu } from '../covers';
 
 class VideoDetails extends React.Component {
   constructor(props) {
@@ -35,7 +35,10 @@ class VideoDetails extends React.Component {
 
   render() {
     return(
-      <div>{this.apiData()}</div>
+      <div>
+        {uperMenu()}
+        {this.apiData()}
+      </div>
     )
   }
 }

@@ -4,7 +4,7 @@ import config from './channel/config.json';
 import { ChannelItem } from './channel/channelItem';
 import { connect } from 'react-redux';
 import { login } from '../actions';
-import uperCover from './cover/UperCover';
+import { uperCover, uperMenu } from './covers';
 import { Table } from 'react-bootstrap'
 
 
@@ -34,6 +34,7 @@ class ChannelMenu extends React.Component {
   render() {
     return (
       <div>
+        {uperMenu()}
         {uperCover()}
         <div style={{ height: '90vh', border: '1px solid white', boxShadow: '1px 1px 1px 1px grey'}}>
           <div className="ui relaxed divided list">{this.state.data}</div>

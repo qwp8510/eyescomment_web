@@ -1,6 +1,7 @@
 import React from 'react';
 import VideoList from './channel/videoList';
-import {VideoItem} from './channel/channelItem';
+import { VideoItem } from './channel/channelItem';
+import { uperMenu } from './covers';
 
 export class ChannelVideo extends React.Component {
   constructor(props) {
@@ -30,7 +31,10 @@ export class ChannelVideo extends React.Component {
 
   render() {
     return (
-      <div>{this.state.data}</div>
+      <div>
+        {uperMenu()}
+        {this.state.data}
+      </div>
     );
   }
 }
