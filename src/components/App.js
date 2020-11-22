@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import ChannelMenu from './ChannelMenu';
 import { ChannelVideo } from './ChannelVideo';
-import VideoDetails from './channel/videoDetail';
+import VideoDetails from './videoDetail';
 
 
 const App = () => {

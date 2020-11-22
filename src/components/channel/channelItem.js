@@ -99,7 +99,7 @@ export const VideoItem = ( channelDetail ) => {
 }
 
 // Video image
-const commentVideoStream = videoData => {
+export const videoStream = videoData => {
   return (
     <Carousel>
       <Carousel.Item>
@@ -136,45 +136,28 @@ const commentForm = data => {
   )
 }
 
-const commentStream = detail => {
+const getCommentStream = detail => {
   const comments = detail.map(data => {
     return commentForm(data)
   })
   return comments
 }
 
-export class DetailItem extends React.Component {
-  state = { detailList: [],  comments: ''}
-
-  componentDidMount() {
-    this.setState({
-      detailList: this.props.detail,
-      comments: commentStream(this.props.detail)
-    })
+export function DetailItem(commentsDetail) {
+  var comments = []
+  if (_.get(commentsDetail, 'detail', null) != null) {
+    comments = getCommentStream(commentsDetail.detail);
   }
 
-  onSearchSubmit = async filterText => {
-    filterText = _.toLower(filterText);
-    const filterComments = _.filter(this.state.detailList, detailItem => {
-      return _.includes(_.toLower(detailItem.text), filterText)
-    });
-    console.log('filterComments:', filterComments);
-    this.setState({ comments: commentStream(filterComments) });
-  };
-
-  render() {
-    return (
-      <div className="ui minimal comments">
-        {commentVideoStream(this.props.videoData)}
-        <SearchBar onSubmit={this.onSearchSubmit} />
-        <h3 className="ui dividing header">Comments</h3>
-        {this.state.comments}
-      </div>
-    )
-  }
+  return (
+    <div className="ui minimal comments">
+      <h3 className="ui dividing header">Comments</h3>
+      {comments}
+    </div>
+  )
 }
 
-class SearchBar extends React.Component {
+export class SearchMenu extends React.Component {
   state = { term: '' };
 
   onFormSubmit = event => {
