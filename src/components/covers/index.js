@@ -19,9 +19,6 @@ export const uperMenu = () => {
       <a class="item">
         <Link to={youtubeAnalyzeLinkUrl} style={{ textDecoration: 'none', color: 'black' }}>Youtube Analyze</Link>
       </a>
-      <a class="item">
-        Reserved
-      </a>
     </div>
   );
 }
