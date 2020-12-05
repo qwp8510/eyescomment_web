@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import userImg from '../../static/user.png';
 import _ from 'lodash';
-import { Table, Carousel, Navbar, Nav, Form, Button, NavDropdown, FormControl} from 'react-bootstrap'
+import { Table, Carousel, Navbar, Nav, Form, NavDropdown} from 'react-bootstrap'
 
 
 // Channel Manu
@@ -46,26 +46,34 @@ export const ChannelItem = channelDetail => {
 
 // Channel Video
 const cardForm = ( detail ) => {
+  const linkParameters = {
+    pathname: `${'/eyescomment/video/'+detail.videoId}`,
+    query: {
+      channelId: `${detail.channelId}`,
+      videoId: `${detail.videoId}`,
+      videoImage: `${detail.videoImage}`,
+      videoName: `${detail.videoName}`,
+      videoChannelName: `${detail.channelName}`,
+      videoPath: `${'/eyescomment/video/'+detail.videoId}`
+    }
+  }
   return (
     <div className="card">
       <div className="image">
-        <Link to={{
-          pathname: `${'/eyescomment/video/'+detail.videoId}`,
-          query: {
-            channelId: `${detail.channelId}`,
-            videoId: `${detail.videoId}`,
-            videoImage: `${detail.videoImage}`,
-            videoName: `${detail.videoName}`,
-            videoChannelName: `${detail.channelName}`,
-            videoPath: `${'/eyescomment/video/'+detail.videoId}`
-          }
-        }}
+        <Link 
+          to={linkParameters}
           className="item">
           <img src={detail.videoImage || "Null"} alt="Null" />
         </Link>
       </div>
       <div className="content">
-        <div className="header">{detail.videoName}</div>
+        <div className="header">
+          <Link 
+            to={linkParameters}
+            className="item">
+              {detail.videoName}
+          </Link>
+        </div>
         <div className="meta">
           <a>{detail.publishedAt}</a>
         </div>
