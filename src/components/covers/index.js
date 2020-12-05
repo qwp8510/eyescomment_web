@@ -14,10 +14,10 @@ export const uperMenu = () => {
   return (
     <div class="ui secondary  menu">
       <a class="active item">
-        <Link to={homeLinkUrl}>Home</Link>
+        <Link to={homeLinkUrl} style={{ textDecoration: 'none', color: 'black' }}>Home</Link>
       </a>
       <a class="item">
-        <Link to={youtubeAnalyzeLinkUrl}>Youtube Analyze</Link>
+        <Link to={youtubeAnalyzeLinkUrl} style={{ textDecoration: 'none', color: 'black' }}>Youtube Analyze</Link>
       </a>
       <a class="item">
         Reserved

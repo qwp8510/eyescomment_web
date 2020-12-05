@@ -11,12 +11,12 @@ const channelForm = data => {
   return (
     <tr>
       <td >
-        <Link to={linkUrl}>
+        <Link to={linkUrl} style={{ textDecoration: 'none', color: 'black' }}>
           {data.channelName}
         </Link>
       </td>
       <td width='150px'>
-        <Link to={linkUrl}>
+        <Link to={linkUrl} style={{ textDecoration: 'none', color: 'black' }}>
           {data.subscriber}
         </Link>
       </td>
@@ -60,7 +60,7 @@ const cardForm = ( detail ) => {
   return (
     <div className="card">
       <div className="image">
-        <Link 
+        <Link
           to={linkParameters}
           className="item">
           <img src={detail.videoImage || "Null"} alt="Null" />
@@ -68,8 +68,9 @@ const cardForm = ( detail ) => {
       </div>
       <div className="content">
         <div className="header">
-          <Link 
+          <Link
             to={linkParameters}
+            style={{ color: 'black' }}
             className="item">
               {detail.videoName}
           </Link>
