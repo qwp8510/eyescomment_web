@@ -9,8 +9,8 @@ export const uperCover = () => {
 }
 
 export const uperMenu = () => {
-  const homeLinkUrl = '/';
-  const youtubeAnalyzeLinkUrl = '/';
+  const homeLinkUrl = '/eyescomment';
+  const youtubeAnalyzeLinkUrl = '/eyescomment';
   return (
     <div class="ui secondary  menu">
       <a class="active item">
