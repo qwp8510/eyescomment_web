@@ -2,7 +2,8 @@ import React from 'react';
 import { getComment } from '../actions';
 import { connect } from 'react-redux';
 import config from './channel/config.json';
-import { DetailItem, SearchMenu, videoStream } from './channel/channelItem';
+import { SearchMenu, videoStream } from './channel/channelItem';
+import GetCommentsView from './channel/commentView';
 import store from '../store';
 import { uperMenu } from './covers';
 import _ from 'lodash';
@@ -42,9 +43,9 @@ class VideoDetails extends React.Component {
     this.setState({comments: filterComments});
   };
 
-  apiData = () => {
+  commentsView = () => {
     if (this.props.api != null) {
-      return <DetailItem
+      return <GetCommentsView
         detail={this.state.comments}
         videoData={this.props.location.query}
       />
@@ -61,7 +62,7 @@ class VideoDetails extends React.Component {
         <SearchMenu
          videoData={this.props.location.query}
          onSubmit={this.onSearchSubmit} />
-        {this.apiData()}
+        {this.commentsView()}
         <div>
           <button
             onClick={() => this.setComments()}>

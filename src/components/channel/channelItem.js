@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import userImg from '../../static/user.png';
 import _ from 'lodash';
 import { Table, Carousel, Navbar, Nav, Form, NavDropdown} from 'react-bootstrap'
 
@@ -123,49 +122,6 @@ export const videoStream = videoData => {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-  )
-}
-
-const commentForm = data => {
-  return (
-    <div className="comment">
-      <a className="avatar">
-        <img src={userImg} alt='null' />
-      </a>
-      <div className="content">
-        <a className="author">{data.author}</a>
-        <div className="metadata">
-          <span className="date">{data.updatedAt}</span>
-        </div>
-        <div className="metadata">
-          <span className="date">sentiment: {_.get(data, 'sentimentScore', 0).toFixed(2)}</span>
-        </div>
-        <div className="text">
-          {data.text}
-        </div>
-      </div>
-    </div>
-  )
-}
-
-const getCommentStream = detail => {
-  const comments = detail.map(data => {
-    return commentForm(data)
-  })
-  return comments
-}
-
-export function DetailItem(commentsDetail) {
-  var comments = []
-  if (_.get(commentsDetail, 'detail', null) != null) {
-    comments = getCommentStream(commentsDetail.detail);
-  }
-
-  return (
-    <div className="ui minimal comments">
-      <h3 className="ui dividing header">Comments</h3>
-      {comments}
-    </div>
   )
 }
 
