@@ -138,7 +138,7 @@ const commentForm = data => {
           <span className="date">{data.updatedAt}</span>
         </div>
         <div className="metadata">
-          <span className="date">sentiment: {_.get(data, 'sentimentScore', 0)}.toFixed(2)</span>
+          <span className="date">sentiment: {_.get(data, 'sentimentScore', 0).toFixed(2)}</span>
         </div>
         <div className="text">
           {data.text}
