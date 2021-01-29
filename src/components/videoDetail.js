@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import config from './channel/config.json';
 import { SearchMenu, videoStream } from './channel/channelItem';
 import GetCommentsView from './channel/commentView';
+import GetSentimentStatisticGroup from './channel/sentimentStatisticGroup';
 import store from '../store';
 import { uperMenu } from './covers';
 import _ from 'lodash';
@@ -60,8 +61,9 @@ class VideoDetails extends React.Component {
         {uperMenu()}
         {videoStream(this.props.location.query)}
         <SearchMenu
-         videoData={this.props.location.query}
-         onSubmit={this.onSearchSubmit} />
+          videoData={this.props.location.query}
+          onSubmit={this.onSearchSubmit} />
+        {GetSentimentStatisticGroup(_.get(this.state, 'comments', []))}
         {this.commentsView()}
         <div>
           <button
