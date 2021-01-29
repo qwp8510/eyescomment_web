@@ -19,7 +19,7 @@ class AuthorCommentPage extends React.Component {
     this.params = {
       database: 'comment-chinese',
       collection: `comment-${this.props.history.location.query.channelId}`,
-      parameter: {authorChannelId: `${this.props.history.location.query.authorChannelId}`},
+      parameter: {author: `${this.props.history.location.query.author}`},
       access_token: state.data.action.payload,
     }
     this.setComments();
@@ -27,7 +27,6 @@ class AuthorCommentPage extends React.Component {
 
   setComments = async () => {
     await this.props.getComment(config.PORTAL_SERVER + 'Mongodbs/commentDetail', this.params);
-    console.log('comment data:', this.props);
     this.setState({comments: this.props.api.action.payload.data});
   }
 
@@ -61,4 +60,3 @@ const mapStateToProps = (state) => {
     mapStateToProps,
     { getComment }
   )(AuthorCommentPage);
-  
