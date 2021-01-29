@@ -18,9 +18,9 @@ class VideoDetails extends React.Component {
   componentDidMount() {
     const state = store.getState();
     this.params = {
-      channelId: `${this.props.history.location.query.channelId}`,
-      videoId: `${this.props.history.location.query.videoId}`,
-      access_token: state.data.action.payload,
+      channelId: `${_.get(this.props, 'history.location.query.channelId')}`,
+      videoId: `${_.get(this.props, 'history.location.query.videoId')}`,
+      access_token: _.get(state, 'data.action.payload'),
     }
     this.setComments();
   }

@@ -113,12 +113,12 @@ export const videoStream = videoData => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={videoData.videoImage}
+          src={_.get(videoData, 'videoImage')}
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>{videoData.videoName}</h3>
-          <p>{videoData.videoChannelName}</p>
+          <h3>{_.get(videoData, 'videoName')}</h3>
+          <p>{_.get(videoData, 'videoChannelName')}</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
