@@ -46,7 +46,7 @@ const setCommentView = (detail, videoData) => {
   return comments
 }
 
-export default function GetCommentsView(commentsDetail, videoData) {
+export default function GetCommentsView(commentsDetail) {
   var comments = []
   if (_.get(commentsDetail, 'detail', null) != null) {
     comments = setCommentView(
