@@ -1,8 +1,8 @@
 import React from 'react';
 import { getComment } from '../actions';
 import { connect } from 'react-redux';
-import config from './channel/config.json';
-import GetCommentsView from './channel/commentView';
+import config from './items/config.json';
+import GetCommentsView from './items/commentView';
 import store from '../store';
 import { uperMenu } from './covers';
 import _ from 'lodash';

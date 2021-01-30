@@ -1,7 +1,7 @@
 import React from 'react';
-import ChannelList from './channel/channelList';
-import config from './channel/config.json';
-import { ChannelItem } from './channel/channelItem';
+import ChannelList from './items/channelList';
+import config from './items/config.json';
+import { ChannelItem } from './items/channelItem';
 import { connect } from 'react-redux';
 import { login } from '../actions';
 import { uperCover, uperMenu } from './covers';

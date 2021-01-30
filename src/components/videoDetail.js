@@ -1,10 +1,10 @@
 import React from 'react';
 import { getComment } from '../actions';
 import { connect } from 'react-redux';
-import config from './channel/config.json';
-import { SearchMenu, videoStream } from './channel/channelItem';
-import GetCommentsView from './channel/commentView';
-import GetSentimentStatisticGroup from './channel/sentimentStatisticGroup';
+import config from './items/config.json';
+import { SearchMenu, videoStream } from './items/channelItem';
+import GetCommentsView from './items/commentView';
+import GetSentimentStatisticGroup from './items/sentimentStatisticGroup';
 import store from '../store';
 import { uperMenu } from './covers';
 import _ from 'lodash';

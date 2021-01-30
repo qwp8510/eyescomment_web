@@ -1,6 +1,6 @@
 import React from 'react';
-import VideoList from './channel/videoList';
-import { VideoItem } from './channel/channelItem';
+import VideoList from './items/videoList';
+import { VideoItem } from './items/channelItem';
 import { uperMenu } from './covers';
 
 export class ChannelVideo extends React.Component {
