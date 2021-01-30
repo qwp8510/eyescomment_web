@@ -139,10 +139,9 @@ export class SearchMenu extends React.Component {
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/eyescomment">Home</Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="/eyescomment">Reserved</Nav.Link>
-          <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+          {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">clustring</NavDropdown.Item>
-          </NavDropdown>
+          </NavDropdown> */}
         </Nav>
         <Form inline>
           <form onSubmit={this.onFormSubmit}>
