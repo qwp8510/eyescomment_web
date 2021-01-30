@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 
 const commentView = (commentData, videoData) => {
   const linkParameters = {
-    pathname: `${'/eyescomment/author/' + commentData.authorChannelId}`,
+    pathname: `${'/eyescomment/author/' + _.get(commentData, 'authorChannelId')}`,
     query: {
-      authorChannelId: `${commentData.authorChannelId}`,
-      author: `${commentData.author}`,
-      channelId: `${videoData.channelId}`,
+      authorChannelId: `${_.get(commentData, 'authorChannelId')}`,
+      author: `${_.get(commentData, 'author')}`,
+      channelId: `${_.get(videoData, 'channelId')}`,
     }
   };
 
@@ -23,10 +23,10 @@ const commentView = (commentData, videoData) => {
             to={linkParameters}
             style={{ color: 'black' }}
             className="item">
-              <a className="author">{commentData.author}</a>
+              <a className="author">{_.get(commentData, 'author')}</a>
         </Link>
         <div className="metadata">
-          <span className="date">{commentData.updatedAt}</span>
+          <span className="date">{_.get(commentData, 'updatedAt')}</span>
         </div>
         <div className="metadata">
           <span className="date">sentiment: {_.get(commentData, 'sentimentScore', 0).toFixed(2)}</span>

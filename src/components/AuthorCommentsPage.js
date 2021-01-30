@@ -18,10 +18,10 @@ class AuthorCommentPage extends React.Component {
     const state = store.getState();
     this.params = {
       database: 'comment-chinese',
-      collection: `comment-${this.props.history.location.query.channelId}`,
-      parameter: {author: `${this.props.history.location.query.author}`},
-      access_token: state.data.action.payload,
-    }
+      collection: `comment-${_.get(this.props, 'history.location.query.channelId')}`,
+      parameter: {author: `${_.get(this.props, 'history.location.query.author')}`},
+      access_token: _.get(state, 'data.action.payload'),
+    };
     this.setComments();
   }
 
