@@ -48,9 +48,9 @@ export default function GetSentimentStatisticGroup(comments) {
         negativeLength = negativeLength + 1;
       };
     };
-    const pos_score = (positiveLength / totalLength).toFixed(2) * 100;
-    const neu_score = (neutralLength / totalLength).toFixed(2) * 100;
-    const neg_score = (negativeLength / totalLength).toFixed(2) * 100;
+    const pos_score = ((positiveLength / totalLength) * 100).toFixed(0);
+    const neu_score = ((neutralLength / totalLength) * 100).toFixed(0);
+    const neg_score = ((negativeLength / totalLength) * 100).toFixed(0);
     return {pos_score, neu_score, neg_score}
   }
   return sentimentStatisticGroup(getScore());
