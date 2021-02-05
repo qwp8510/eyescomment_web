@@ -26,10 +26,10 @@ const commentView = (commentData, videoData) => {
               <a className="author">{_.get(commentData, 'author')}</a>
         </Link>
         <div className="metadata">
-          <span className="date">{_.get(commentData, 'updatedAt')}</span>
+          <span className="date">總留言數:{_.get(commentData, 'commentNum', 'lower then 5')}</span>
         </div>
         <div className="metadata">
-          <span className="date">sentiment: {_.get(commentData, 'sentimentScore', 0).toFixed(2)}</span>
+          <span className="date">情感分析分數: {_.get(commentData, 'sentimentScore', 0).toFixed(2)}</span>
         </div>
         <div className="text">
           {commentData.text}
@@ -39,7 +39,18 @@ const commentView = (commentData, videoData) => {
   )
 }
 
+function compareCommentNumDesc(a, b) {
+  if (_.get(a, 'commentNum', 0) < _.get(b, 'commentNum', 0)){
+    return 1;
+  }
+  if (_.get(a, 'commentNum', 0) > _.get(b, 'commentNum', 0)){
+    return -1;
+  }
+  return 0;
+}
+
 const setCommentView = (detail, videoData) => {
+  detail.sort(compareCommentNumDesc);
   const comments = detail.map(data => {
     return commentView(data, videoData)
   })
