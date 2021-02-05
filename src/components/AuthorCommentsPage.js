@@ -2,7 +2,7 @@ import React from 'react';
 import { getComment } from '../actions';
 import { connect } from 'react-redux';
 import config from './items/config.json';
-import GetCommentsView from './items/commentView';
+import GetAuthorCommentsView from './items/authorCommentView';
 import store from '../store';
 import { uperMenu } from './covers';
 import _ from 'lodash';
@@ -32,9 +32,8 @@ class AuthorCommentPage extends React.Component {
 
   commentsView = () => {
     if (this.props.api != null) {
-      return <GetCommentsView
+      return <GetAuthorCommentsView
         detail={this.state.comments}
-        videoData={this.props.location.query}
       />
     } else {
       return 'loading...'
